@@ -1,8 +1,7 @@
-# Imitatio-Learning-Mars-Rover
+# Imitation-Learning-Mars-Rover
 Udacity + NASA Mars Rover challenge Implementation using Imitation Learning
 
-<center> Raspberry Pi Wiring :</center>
-<center><img src="./Images/RPi.jpg" width="50%" /></center>
+<center><img src="./Images/rover.png" width="50%" /></center>
 
 ## Abstract
 
@@ -44,10 +43,7 @@ Table 1. Seven Imitation Learning Classes for Front Camera Images
 
 The architecture of our network is the same and is as follows:
 
-<center> Raspberry Pi Wiring :</center>
-<center><img src="./Images/RPi.jpg" width="50%" /></center>
-
-Figure 2. EasyNet Neural Network Layers
+<center><img src="./Images/NNarch.png" width="50%" /></center>
 
 We keep the architecture relatively simple in order to have a faster training speed, so we used EasyNet. This is so that we can train many different models in our given time so that we can experiment with different methods while recording expert data. The expert data has more control in the performance of the rover so we prioritize perfecting that instead of having a more complex CNN.
 
@@ -55,10 +51,8 @@ We keep the architecture relatively simple in order to have a faster training sp
 
 Below is a graphic of how data traverses our pipeline and is used to make decisions in our experimental runs:
 
-<center> Raspberry Pi Wiring :</center>
-<center><img src="./Images/RPi.jpg" width="50%" /></center>
-
-Figure 3. Front Camera Images Rover Traversal Steps
+<center> Figure 4: Data Pipeline</center>
+<center><img src="./Images/pipeline.png" width="50%" /></center>
 
 From Figure 3 &amp; 4, we can see the 2 rover traversal steps. When the rover starts its experimental run, it will supply a stream of images and each image is passed through the trained network. The networks returns a score/probability of which class the rover is in and then returns whichever class has the highest score/probability. This score is interpreted into a set of actions and the rover is given a set of instructions based on how the expert reacted in a similar scenario.
 
@@ -76,24 +70,15 @@ Table 2. Four Imitation Learning Classes for Images with Perspective Transformat
 
 First, we re-designed the neural network in rovernet.py file so that it only trains on 4 action classes: throttle\_left, throttle\_right, throttle, keep(no action), in table 2 above.
 
-<center> Raspberry Pi Wiring :</center>
-<center><img src="./Images/RPi.jpg" width="50%" /></center>
-
-Figure 4. Perspective Transformation (top right) &amp; Color Thresholding (bottom left) of the Front Camera Images [1]
-
-<center> Raspberry Pi Wiring :</center>
-<center><img src="./Images/RPi.jpg" width="50%" /></center>
-
-Figure 5. Final Output after Image Transformation
+<center> Perspective Transform + Color Thresholding :</center>
+<center><img src="./Images/4transform.png" width="50%" /></center>
 
 Second, we modified the roverimitations.py file so that the agent is trained on the front camera images that have gone through perspective transformation and color thresholding. We utilized some of the functions supporting\_functions.py provided by the Udacity Rover challenge and modified it with hw1 imitation evaluate code to transform these images.[1] Figure 4 shows the examples of these images&#39; transformation for us to obtain useful freespace information to train on. For us to visualize the terrain better, we add red color the obstacles and blue color to the freespace shown in Figure 5.
 
 Third, we modified the preprocecssing.py file so that we could shuffle and randomly drop different amounts of collected datasets to balance the keep, throttle\_left and throttle\_right classes.
 
-<center> Raspberry Pi Wiring :</center>
-<center><img src="./Images/RPi.jpg" width="50%" /></center>
-
-Figure 6. Optimization - Images with Perspective Transformation and Color Thresholding Rover Traversal Steps
+<center> Transform Data Pipeline:</center>
+<center><img src="./Images/pipeline2.png" width="50%" /></center>
 
 Fourth, we modified the decision.py file so that the rover, when making a decision, fed the trained agent with the similarly transformed images shown in Figure 5. When driving the rover, it utilizes the trained agent following the steps in Figure 6.
 
@@ -145,9 +130,8 @@ Upon testing our model, we found success in reaching the goal set for this model
 
 ## Transformed Image Rover Traversal
 
-<center> Raspberry Pi Wiring :</center>
-<center><img src="./Images/RPi.jpg" width="50%" /></center>
-Figure 7. Representative Trained Agents using Transformed Front Camera Images
+<center> Table of Transform Results:</center>
+<center><img src="./Images/restable.png" width="50%" /></center>
 
 We collected around 15 groups of datasets and trained around 16 agents. Agents are trained on both 7 classes and 4 classes. Different groups of datasets are collected using distinct or slightly modified strategies, different number of classes and are trained with different percentages of data dropping rate. Figure 7 presents the best model model and other representative agents&#39; data collection strategies, results and reasons, we will also explain them in more detail below.
 
