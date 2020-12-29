@@ -44,7 +44,8 @@ Table 1. Seven Imitation Learning Classes for Front Camera Images
 
 The architecture of our network is the same and is as follows:
 
-![](RackMultipart20201229-4-tu53yk_html_40ababc39077f24d.png)
+<center> Raspberry Pi Wiring :</center>
+<center><img src="./Images/RPi.jpg" width="50%" /></center>
 
 Figure 2. EasyNet Neural Network Layers
 
@@ -54,8 +55,8 @@ We keep the architecture relatively simple in order to have a faster training sp
 
 Below is a graphic of how data traverses our pipeline and is used to make decisions in our experimental runs:
 
-| ![](RackMultipart20201229-4-tu53yk_html_201aba0d44e8fdda.png) |
-| --- |
+<center> Raspberry Pi Wiring :</center>
+<center><img src="./Images/RPi.jpg" width="50%" /></center>
 
 Figure 3. Front Camera Images Rover Traversal Steps
 
@@ -75,11 +76,13 @@ Table 2. Four Imitation Learning Classes for Images with Perspective Transformat
 
 First, we re-designed the neural network in rovernet.py file so that it only trains on 4 action classes: throttle\_left, throttle\_right, throttle, keep(no action), in table 2 above.
 
-![](RackMultipart20201229-4-tu53yk_html_afe54641b236032e.png)
+<center> Raspberry Pi Wiring :</center>
+<center><img src="./Images/RPi.jpg" width="50%" /></center>
 
 Figure 4. Perspective Transformation (top right) &amp; Color Thresholding (bottom left) of the Front Camera Images [1]
 
-![](RackMultipart20201229-4-tu53yk_html_42e0ad91eb4ee943.png)
+<center> Raspberry Pi Wiring :</center>
+<center><img src="./Images/RPi.jpg" width="50%" /></center>
 
 Figure 5. Final Output after Image Transformation
 
@@ -87,8 +90,8 @@ Second, we modified the roverimitations.py file so that the agent is trained on 
 
 Third, we modified the preprocecssing.py file so that we could shuffle and randomly drop different amounts of collected datasets to balance the keep, throttle\_left and throttle\_right classes.
 
-| ![](RackMultipart20201229-4-tu53yk_html_6e437d71a1c4f70a.png) |
-| --- |
+<center> Raspberry Pi Wiring :</center>
+<center><img src="./Images/RPi.jpg" width="50%" /></center>
 
 Figure 6. Optimization - Images with Perspective Transformation and Color Thresholding Rover Traversal Steps
 
@@ -140,19 +143,10 @@ When recording the expert data for this module&#39;s model, we would set a speci
 
 Upon testing our model, we found success in reaching the goal set for this model. The rover&#39;s behavior would be ambiguous when just travelling in the middle of an open area but once it saw a wall in proximity of the camera angle, it would &quot;latch&quot; onto that wall and start approaching it and using it as reference as a path. Once it caught a wall it would use a reference, it could be observed that the rover would throttle along the wall and adjust accordingly to the curvature of the wall. In situations where the wall had sharp curves, the rover would usually make the correct decision and would come to a complete stop and rotate till it was aligned with the next section of wall. However, there were situations where the rover would have too much initial velocity to make the turn without colliding with the wall first. An example of this situation is if the rover has a straight shot for a long distance and then has a sharp turn ~90 degrees. This is not deemed a failure in our goal though due to the controlled speed that we train our rover to take. The speed the rover traverses is around 1-2 mph. In more gradual turns, the rover would have the most success as small adjustments were no problem for the rover.
 
-## Recombination of Modules
-
-When combining the two expert datasets and training a new model to combine our individual tasks, we found that the performance was not satisfactory and did not achieve the goals of the two different modules combined. In fact, the ability to perform either task was lost and the rover started behaving just like our initial model did once again. When given the obstacle detection course, the rover did not classify obstacles and just got stuck in the brake class while in front of a rock. In the path following course, the rover would move a little and then eventually get stuck in the keep or brake class once again before it had the chance to traverse or catch a wall to follow.
-
-We think that this happened because of several reasons. One of those reasons is because the data balance we had achieved individually from the modules were once again altered and it showed from our rover being stuck in the same couple of classes. We performed additional data processing in order to balance this once again but it still did not get unstuck from those classes. Another reason we think this happened is because the balance between the classes must be too different in order to combine. The make up for the optimal performing individual modules had drastically different data balances and changing it to be a combination of the two modules made it so that neither of the tasks could be completed or learned from the rover&#39;s network. We talk about possible fixes in the Future Works section later.
-
-##
-
-
 ## Transformed Image Rover Traversal
 
-![](RackMultipart20201229-4-tu53yk_html_96de335e00a00b77.png)
-
+<center> Raspberry Pi Wiring :</center>
+<center><img src="./Images/RPi.jpg" width="50%" /></center>
 Figure 7. Representative Trained Agents using Transformed Front Camera Images
 
 We collected around 15 groups of datasets and trained around 16 agents. Agents are trained on both 7 classes and 4 classes. Different groups of datasets are collected using distinct or slightly modified strategies, different number of classes and are trained with different percentages of data dropping rate. Figure 7 presents the best model model and other representative agents&#39; data collection strategies, results and reasons, we will also explain them in more detail below.
@@ -189,7 +183,6 @@ Fourth, the simulation can also be modified to introduce real Mars terrain patte
 
 ## Appendix
 
-1.
 ## Training Outputs
 
 | ![](RackMultipart20201229-4-tu53yk_html_3e4fe37f54269c85.png) |
