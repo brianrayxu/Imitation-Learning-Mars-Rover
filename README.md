@@ -29,13 +29,13 @@ Once we have obtained expert data, we use this collection of images and correspo
 
 | Class | Action [steer, throttle, brake] |
 | --- | --- |
-| throttle | [steer = 0, throttle \&gt;0, brake = 0] |
-| brake | [steer = 0, throttle = 0, brake \&gt;0] |
-| left | [steer \&gt;0, throttle = 0, brake = 0] |
-| right | [steer \&lt;0, throttle = 0, brake = 0] |
-| throttle left | [steer \&gt;0, throttle \&gt;0, brake = 0] |
-| throttle right | [steer \&lt;0, throttle \&gt;0, brake = 0] |
-| keep | [steer \&lt;0, throttle \&gt;0, brake = 0] |
+| throttle | [steer = 0, throttle > 0, brake = 0] |
+| brake | [steer = 0, throttle = 0, brake > 0] |
+| left | [steer > 0, throttle = 0, brake = 0] |
+| right | [steer < 0, throttle = 0, brake = 0] |
+| throttle left | [steer > 0, throttle > 0, brake = 0] |
+| throttle right | [steer < 0, throttle > 0, brake = 0] |
+| keep | [steer < 0, throttle > 0, brake = 0] |
 
 Table 1. Seven Imitation Learning Classes for Front Camera Images
 
