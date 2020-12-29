@@ -1,32 +1,12 @@
 # Imitatio-Learning-Mars-Rover
 Udacity + NASA Mars Rover challenge Implementation using Imitation Learning
-# Martian Learning: Imitation Learning on a Mars Rover
 
-By Brian Xu and Hairuo Sun
-
-## ![](RackMultipart20201229-4-tu53yk_html_e66d03382b51f2cb.png)
-
-Figure 1. NASA Search and Sample Challenge, 2016
+<center> Raspberry Pi Wiring :</center>
+<center><img src="./Images/RPi.jpg" width="50%" /></center>
 
 ## Abstract
 
 A Mars rover&#39;s ability to safely conduct free-space mapping of unknown Martian terrain with undrivable areas and obstacles is essential for improving autonomous exploration robustness and extending the rover&#39;s life-expectancy. This project proposes using imitation learning to train the rover to traverse in a simulated Mars environment. 2 different sets of expert data, including actions and corresponding images, which are front camera images and images that went through perspective transformation and color thresholding, are collected for training the rover. The transformed image is an optimization of the front camera image, showing the amount of free space within the camera angles. This project has 2 goals: first, allowing the rover to traverse autonomously by following the mountain walls; second, implementing obstacles avoidance or end of the route collision by steering. Our experimental result shows that, despite the difficulty in distinguishing between wall obstructions and end of the route when making the steering decision, the rover can still manage to complete wall following, obstacle and collision avoidance in the Mars simulator for over 80 percent of the time.
-
-## Introduction
-
-Large parts of Martian terrain haven&#39;t been explored and several past rover missions were concluded because rovers were immobilized in undrivable terrains. In order to navigate in the past, rovers were either given manual commands with a latency of more than 13 minutes (that&#39;s a ping of ~780,000!), or in more recent times, driven autonomously using a collection of sensors. As autonomous driving methods improve here back on Earth, using neural nets and using more powerful computer vision techniques have found their place at the top. Many of these implementations include identifying obstacles and un-passable terrain from camera images in order to determine the best course of action. Therefore, by essentially mapping the freespace area using computer vision techniques and training the rover to classify and identify un-drivable terrains and obstacles, we can help the rover navigate its surroundings safely, potentially preventing a rover&#39;s demise before it is all but guaranteed.
-
-## Related Works
-
-In the Udacity Mars Rover Challenge, monocular image analysis is the most essential component for completing the autonomous navigation goals. The preprocessing procedure is implemented in 2 steps: first, implementing monocular image perspective transformation; second, adding occupancy grid. After proper scene understanding, 2 different decision-making processes have been implemented in the past: first, the finite state machine; second, path-planning algorithms, such as A-star algorithms and Djikstra&#39;s algorithms. [2]
-
-For the preprocessing procedure, implementing the perspective transformation of the images allows the Rover to obtain a Top Down view of the Rover front camera image. [1] Then, adding an occupancy grid on this top down view image allows the rover to obtain the distance information for navigable terrain and obstacles. [4]
-
-With all necessary information obtained, the finite state machine, with a specific set of states, including wall following state, wall finding state, wal/obstacle avoidance state, getting unstuck state, parking state, is implemented to ensure fluent autonomous traversal. However, the limited state transitions may fail if it encounters new scenarios, such as areas without walls, or areas with more wall obstructions. In addition, this method keeps the rover at a specific distance from the wall and doesn&#39;t allow the rover to explore other areas of interest.
-
-The path-planning algorithms can also be used to plan autonomous traversal, such as Unicycle models; however, it works best when the rover has already known the obstacle positions on the map ahead of time and where exactly it will be traversing to. Therefore, it doesn&#39;t work well with unknown obstacles, and it also takes time for the rover to process the information and adjust its course to the final destination, slowing down the autonomous navigation speed. [6]
-
-Therefore, a good autonomous navigation method should be able to combine the detailed scene understanding, which uses the analysis of a front camera monocular image or perspective transformed image, with a proper learning agent that can adapt to various scenarios without failing and can respond to its surroundings and take the next actions immediately.
 
 ## Methods
 
@@ -227,28 +207,6 @@ Fourth, the simulation can also be modified to introduce real Mars terrain patte
 | ![](RackMultipart20201229-4-tu53yk_html_62c1f9d903b53d70.png) |
 | --- |
 | Front Camera Image with Perspective Transformation and Color Thresholding Loss Plot (stabilizes at around 13) |
-
-1.
-## Sample Outputs GIFs &amp; Videos
-
-### Front Camera Rover Traversal GIFs
-
-- GIFs of performance can be found in the presentation slides 10 &amp; 11 (GIFs do not load on PDF)
-- Presentation slides link: [https://docs.google.com/presentation/d/1nsBOyPENV18Kdcy4F2FEK5CfuT1mkPPBEbo74Y\_DHa4/edit?usp=sharing](https://docs.google.com/presentation/d/1nsBOyPENV18Kdcy4F2FEK5CfuT1mkPPBEbo74Y_DHa4/edit?usp=sharing)
-
-### Transformed Image Rover Traversal Videos (youtube links):
-
-- Following right wall (original training route): [https://youtu.be/zkZdn1vhk5M](https://youtu.be/zkZdn1vhk5M)
-- Following right wall &amp; turn at the end (new test route): [https://youtu.be/FLxTmbcKRXk](https://youtu.be/FLxTmbcKRXk)
-- Following left wall (original training route) (need human intervention during traversal): [https://youtu.be/6yhUoRV45ks](https://youtu.be/6yhUoRV45ks)
-
-1.
-## Work Distribution
-
-| Member | Tasks |
-| --- | --- |
-| Brian Xu | - Implement rovernet.py + rovertraining.py - Implement roverpreprocessing.py and decision.py - Implement Front Camera Image Wall-following experiment + optimizations- Created Presentation slides (1-12, 18, 20)- Write Report (Introduction, Methods, Front Camera Results, Appendix) |
-| Hairuo Sun | - Implement 2 roverimitations.py files (front camera &amp; transformed images optimization)- Implement decison.py + analysis.py- Modify rovernet.py (optimization) - Implement Front Camera Image Obstacle Avoidance Experiment- Implement optimizations: front camera image perspective transforms and color thresholding (perception.py)- Implement Transformed Image Wall-following &amp; End route Steering Experiment- Complete Presentation slides (13 - 17, 19, 20)- Write Report (Abstract, Related Works, Transformed Image Imitation Learning Optimization Method &amp; Result, Conclusion, Future Works, Appendix) |
 
 ## References
 
