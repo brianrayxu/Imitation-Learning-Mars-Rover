@@ -165,26 +165,6 @@ Third, combining the modular implementation with imitation learning so that the 
 
 Fourth, the simulation can also be modified to introduce real Mars terrain patterns and the rover can be trained to distinguish between different terrain types to determine which terrain is safe to traverse and which terrain is dangerous.
 
-## Appendix
-
-## Training Outputs
-
-| ![](RackMultipart20201229-4-tu53yk_html_3e4fe37f54269c85.png) |
-| --- |
-| Initial Model Loss Plot |
-
-| ![](RackMultipart20201229-4-tu53yk_html_8192bb470fde6ea7.png) |
-| --- |
-| Obstacle Detection Loss Plot |
-
-| ![](RackMultipart20201229-4-tu53yk_html_945606fb1eb01f90.png) |
-| --- |
-| Wall/Path Following Module Loss Plot |
-
-| ![](RackMultipart20201229-4-tu53yk_html_62c1f9d903b53d70.png) |
-| --- |
-| Front Camera Image with Perspective Transformation and Color Thresholding Loss Plot (stabilizes at around 13) |
-
 ## References
 
 [1] &quot;Robot Search and Sample&quot; _Github.com_, 4th October 2020, [https://github.com/ryan-keenan/RoboND-Python-Starterkit](https://github.com/ryan-keenan/RoboND-Python-Starterkit)
