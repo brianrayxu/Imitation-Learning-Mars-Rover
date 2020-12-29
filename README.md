@@ -7,8 +7,6 @@ Udacity + NASA Mars Rover challenge Implementation using Imitation Learning
 
 A Mars rover&#39;s ability to safely conduct free-space mapping of unknown Martian terrain with undrivable areas and obstacles is essential for improving autonomous exploration robustness and extending the rover&#39;s life-expectancy. This project proposes using imitation learning to train the rover to traverse in a simulated Mars environment. 2 different sets of expert data, including actions and corresponding images, which are front camera images and images that went through perspective transformation and color thresholding, are collected for training the rover. The transformed image is an optimization of the front camera image, showing the amount of free space within the camera angles. This project has 2 goals: first, allowing the rover to traverse autonomously by following the mountain walls; second, implementing obstacles avoidance or end of the route collision by steering. Our experimental result shows that, despite the difficulty in distinguishing between wall obstructions and end of the route when making the steering decision, the rover can still manage to complete wall following, obstacle and collision avoidance in the Mars simulator for over 80 percent of the time.
 
-## Methods
-
 ## Udacity Mars Rover Simulator
 
 We will use Unity 3D to simulate a sample environment on Mars. The simulation is based on an existing Mars Search Robot Project developed for NASA Search and Sample-Return challenge (2016). In order to implement this environment, we first download miniconda in order to be consistent with the package versions used when the simulator was first released. We use an _environment.yml_ template provided in order to create and activate the RoboND environment required to develop and test with the simulator.
@@ -83,6 +81,12 @@ Third, we modified the preprocecssing.py file so that we could shuffle and rando
 Fourth, we modified the decision.py file so that the rover, when making a decision, fed the trained agent with the similarly transformed images shown in Figure 5. When driving the rover, it utilizes the trained agent following the steps in Figure 6.
 
 ## Results
+
+### Sample Outputs
+#### Initial Model
+![](initial model.gif)
+
+#### Front Camera - Path Following
 
 ## Initial Model
 
