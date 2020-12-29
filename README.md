@@ -84,9 +84,12 @@ Fourth, we modified the decision.py file so that the rover, when making a decisi
 
 ### Sample Outputs
 #### Initial Model
+
 ![](initial model.gif)
 
 #### Front Camera - Path Following
+
+![](path following.gif)
 
 ## Initial Model
 
